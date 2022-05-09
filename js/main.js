@@ -11,6 +11,10 @@ let silderItems = document.querySelectorAll(".slide-item"),
   sections = document.querySelectorAll(".section"),
   projects = document.querySelectorAll(".project");
 //slider setting----------------
+window.onload = () => {
+  let loadingSpinner = document.querySelector(".loadingOver");
+  loadingSpinner.classList.add("removeLoading");
+};
 var id = setInterval(autoSlider, 9900);
 previous.onclick = () => {
   if (count == 0) {

@@ -10,9 +10,64 @@ html{
     --back:#242424;
 }
 body{
+    position: relative;
     background-color: var(--back) !important;
 }
 /* -------navbar-------------- */
+.loadingOver{
+    position: fixed;
+    z-index: 55566;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100vh ;
+    background-color: var(--back);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 500ms;
+}
+.loadingOver .pulsar {
+  --uib-size: 40px;
+  --uib-speed: 1.5s;
+  --uib-color: #ffb400;
+
+  position: relative;
+  height: var(--uib-size);
+  width: var(--uib-size);
+}
+.loadingOver .pulsar::before,
+.loadingOver .pulsar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  background-color: var(--uib-color);
+  animation: pulse var(--uib-speed) ease-in-out infinite;
+  transform: scale(0);
+}
+
+.loadingOver .pulsar::after {
+  animation-delay: calc(var(--uib-speed) / -2);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.25;
+  }
+}
+.removeLoading{
+    top:-100%;
+}
 .navbar{
     padding: 25px 0 !important;
     position: absolute !important;
@@ -1076,6 +1131,24 @@ button:hover >i{
     }
     .slider .left,.slider .right{
         display: none;
+    }
+}
+@media(max-width:450px){
+    .about-us .content .first-section .sections{
+        flex-direction: column;
+    }
+    .about-us .content .first-section .sections span {
+        display: none;
+    }
+    .about-us .content .first-section a{
+        width: 100%;
+        padding: 5px 10px ;
+    }
+
+    .about-us .content .first-section .sections .active {
+        background-color: var(--base);
+        color: #fff;
+        border-radius: 5px;
     }
 }
   
